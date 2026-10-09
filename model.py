@@ -26,8 +26,17 @@ def softmax(logits, axis=-1):
     return F.softmax(torch.tensor(logits,dtype=torch.float64),dim=axis)
     pass
 
-# Step 3 - gather_token_logprobs (not yet solved)
-# TODO: implement
+# Step 3 - gather_token_logprobs
+import numpy as np
+import torch
+def gather_token_logprobs(log_probs, token_ids):
+    # TODO: Extract the log-probability of each observed token from a full vocab log-prob tensor...
+    log_probs=torch.tensor(log_probs)
+    token_ids=torch.tensor(token_ids)
+    token_ids=token_ids.unsqueeze(-1)
+    gathered=log_probs.gather(dim=-1,index=token_ids)
+    return gathered.squeeze(-1).numpy()
+    pass
 
 # Step 4 - masked_sequence_logprob (not yet solved)
 # TODO: implement
