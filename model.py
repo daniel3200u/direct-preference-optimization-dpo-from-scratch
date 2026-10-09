@@ -18,8 +18,13 @@ def log_softmax(logits, axis=-1):
     return np.round(result.numpy(), 4)  
     pass
 
-# Step 2 - softmax (not yet solved)
-# TODO: implement
+# Step 2 - softmax
+import torch.nn.functional as F
+import numpy as np
+def softmax(logits, axis=-1):
+    # TODO: Convert an array of logits into a probability distribution along a given axis
+    return F.softmax(torch.tensor(logits,dtype=torch.float64),dim=axis)
+    pass
 
 # Step 3 - gather_token_logprobs (not yet solved)
 # TODO: implement
